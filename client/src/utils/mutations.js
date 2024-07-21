@@ -54,13 +54,13 @@ export const ADD_REACTION = gql`
   }
 `;
 
-export const ADD_FRIEND = gql`
-  mutation addFriend($id: ID!) {
-    addFriend(friendId: $id) {
+export const FOLLOW = gql`
+  mutation follow($id: ID!) {
+    follow(followId: $id) {
       _id
       username
-      friendCount
-      friends {
+      followCount
+      following {
         _id
         username
       }
@@ -68,12 +68,12 @@ export const ADD_FRIEND = gql`
   }
 `;
 
-export const REMOVE_FRIEND = gql`
-  mutation removeFriend($id: ID!) {
-    removeFriend(id: $id) {
+export const UNFOLLOW = gql`
+  mutation unfollow($id: ID!) {
+    unfollow(id: $id) {
       _id
       username
-      friends {
+      following {
         _id
         username
       }

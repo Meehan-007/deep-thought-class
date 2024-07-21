@@ -1,7 +1,7 @@
 import React from 'react';
 import ThoughtList from '../components/ThoughtList';
 import ThoughtForm from '../components/ThoughtForm';
-import FriendList from '../components/FriendList';
+import FollowList from '../components/FollowList';
 
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
@@ -34,10 +34,10 @@ const Home = () => {
         </div>
         {loggedIn && userData ? (
           <div className="col-12 col-lg-3 mb-3">
-            <FriendList
+            <FollowList
               username={userData.me.username}
-              friendCount={userData.me.friendCount}
-              friends={userData.me.friends}
+              followCount={userData.me.followCount}
+              following={userData.me.following}
             />
           </div>
         ) : null}

@@ -16,7 +16,7 @@ The app is built using Node.js, Mongoose, Express.js, and React.
 The source code is licensed under the MIT license.
 
 ## Features:
-It has a sign-up feature and login capabilities. Users can write comments to other users, and their profile will also track all their posts and friends. Right now, you can only view your profile page, but later I would like to enable viewing other users' pages, as well as allowing users to add friends to their friend list.
+It has a sign-up feature and login capabilities. Users can write comments to other users, and their profile will also track all their posts and followers. Right now, you can only view your profile page, but later I would like to enable viewing other users' pages, as well as allowing users to add followers to their following list.
 
 ## Contact:
 For any inquiries or support, please contact Patrick Meehan at Meehan.007@hotmail.com. My GitHub handle is Meehan-007.

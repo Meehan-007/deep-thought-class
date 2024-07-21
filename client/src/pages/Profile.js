@@ -3,17 +3,17 @@ import { Navigate, useParams } from 'react-router-dom';
 
 import ThoughtForm from '../components/ThoughtForm';
 import ThoughtList from '../components/ThoughtList';
-import FriendList from '../components/FriendList';
+import FollowList from '../components/FollowList';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
-import { ADD_FRIEND } from '../utils/mutations';
+import { FOLLOW } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const Profile = (props) => {
   const { username: userParam } = useParams();
 
-  const [addFriend] = useMutation(ADD_FRIEND);
+  const [Follow] = useMutation(FOLLOW);
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
@@ -21,7 +21,9 @@ const Profile = (props) => {
   const user = data?.me || data?.user || {};
 
   // navigate to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) { 
+    console.log(userParam);
+    console.log(Auth.getProfile().data.username, "checking to see the match");
     return <Navigate to="/profile:username" />;
   }
 
@@ -40,7 +42,7 @@ const Profile = (props) => {
 
   const handleClick = async () => {
     try {
-      await addFriend({
+      await Follow({
         variables: { id: user._id },
       });
     } catch (e) {
@@ -57,7 +59,7 @@ const Profile = (props) => {
 
         {userParam && (
           <button className="btn ml-auto" onClick={handleClick}>
-            Add Friend
+            follow
           </button>
         )}
       </div>
@@ -71,10 +73,10 @@ const Profile = (props) => {
         </div>
 
         <div className="col-12 col-lg-3 mb-3">
-          <FriendList
+          <FollowList
             username={user.username}
-            friendCount={user.friendCount}
-            friends={user.friends}
+            followCount={user.followCount}
+            following={user.following}
           />
         </div>
       </div>

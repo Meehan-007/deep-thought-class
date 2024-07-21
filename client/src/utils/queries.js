@@ -42,8 +42,8 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      friendCount
-      friends {
+      followCount
+      following {
         _id
         username
       }
@@ -63,7 +63,7 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      friendCount
+      followCount
       thoughts {
         _id
         thoughtText
@@ -76,7 +76,7 @@ export const QUERY_ME = gql`
           username
         }
       }
-      friends {
+      following {
         _id
         username
       }
@@ -90,8 +90,8 @@ export const QUERY_ME_BASIC = gql`
       _id
       username
       email
-      friendCount
-      friends {
+      followCount
+      following {
         _id
         username
       }
